@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions name="Student"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             targetNamespace="http://localhost/Html/Soap/soap/Student"
+             xmlns:tns="http://localhost/Html/Soap/soap/Student"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xsd:schema targetNamespace="http://localhost/Soap/soap/Student">
+            <xsd:element name="StudentObject">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Admission_Number" type="xsd:int"/>
+                        <xsd:element name="Name" type="xsd:string"/>
+                        <xsd:element name="Email" type="xsd:string"/>
+                        <xsd:element name="Phone_Number" type="xsd:string"/>
+                        <xsd:element name="Address" type="xsd:string"/>
+                        <xsd:element name="Faculty" type="xsd:string"/>
+                        
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </types>
+    <message name="studentFetchRequest">
+        <part name="Admission_Number" type="xsd:int"/>
+    </message>
+    <message name="studentFetchResponse">
+        <part name="Student" type="xsd:StudentObject"/>
+    </message>
+    <portType name="StudentPortType">
+        <operation name="getStudent">
+            <input message="tns:studentFetchRequest"/>
+            <output message="tns:studentFetchResponse"/>
+        </operation>
+    </portType>
+    <binding name="StudentBinding" type="tns:StudentPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getStudent">
+            <soap:operation soapAction="tns:getStudent"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="StudentService">
+        <documentation>WSDL Fetching a Student by Admission Number</documentation>
+        <port binding="tns:StudentBinding" name="StudentPort">
+            <soap:address location="http://localhost/Html/Soap/soap/SoapServer.php"/>
+        </port>
+    </service>
+</definitions>

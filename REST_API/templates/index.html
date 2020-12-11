@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Students {% endblock %}</h1>
+    <form method="get" class="form-inline">
+        <!--Search for a student -->
+    <input type="text" placeholder="Enter student number" name="student_number" class="form-control" required>
+    <input type="submit" value="Search" class="btn btn-primary">
+    </form><br>
+    
+    <table class="table table-hover">
+    	<tr class ="success">
+    		<th>Admission_Number</th>
+    		<th>Name</th>
+    		<th>Email</th>
+    		<th>Phone_Number</th>
+    		<th>Address</th>
+    		<th>Faculty</th>
+    	</tr>
+
+    	{% for student in students %}
+    	<a href="#">
+    		<tr>
+				<td>{{student['Admission_Number']}}</td>
+				<td>{{student['Name']}}</td>
+				<td>{{student['Email']}}</td>
+				<td>{{student['Phone_Number']}}</td>
+				<td>{{student['Address']}}</td>
+				<td>{{student['Faculty']}}</td>
+			</tr>
+        {% endfor %}
+    </table>
+   
+{% endblock %}

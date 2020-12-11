@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+<center>
+	{% for student in students %}
+	<tr>
+		<td>{{student['Admission_number']}}</td>
+	</tr>
+	{% endfor %}
+
+</center>
