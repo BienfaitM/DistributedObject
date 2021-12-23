@@ -66,7 +66,7 @@ class Database {
 	 * @throws Exception
 	 */
 	private function get_connection($db_name = 'soap_db') {
-		if ($db_name) $connection = mysqli_connect('localhost', 'root', '2wlApluS', $db_name); else $connection = mysqli_connect('localhost', 'root', '2wlApluS');
+		if ($db_name) $connection = mysqli_connect('localhost', 'root', '', $db_name); else $connection = mysqli_connect('localhost', 'root', '2wlApluS');
 		if (!$connection) throw new Exception("Unable to Connect to the Database with the Supplied Settings.\nError: " . mysqli_connect_error());
 		return $connection;
 	}
