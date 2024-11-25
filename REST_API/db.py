@@ -7,9 +7,9 @@ with open('schema.sql') as f:
 
 cursor = connection.cursor()
 cursor.execute("Insert into students (Admission_number,Name,Email,Phone_Number,Address,Faculty) VALUES(?,?,?,?,?,?)",
-	(99271,'Murhula Mwambali','murhula@gmail.com',703990088,'Langata','FIT'))
+	(99271,'Murhula Mwambali','murhula@gmail.com',70,'Langata','FIT'))
 cursor.execute("Insert into students (Admission_number,Name,Email,Phone_Number,Address,Faculty) VALUES(?,?,?,?,?,?)",
-	(99773,'Mwambali','Mwambali@gmail.com',70300088,'Bukavu','FINANCE'))
+	(99773,'Mwambali','Mwambali@gmail.com',703,'Bukavu','FINANCE'))
 
 connection.commit()
 connection.close()
